@@ -29,8 +29,24 @@ public class BOJ3986fail {
 
         ArrayDeque<Character> stack = new ArrayDeque<>();
 
+        for (int i = 0; i < line.length(); i++) {
+            char c = line.charAt(i);
 
+            if (stack.isEmpty()) {
 
-        return null;
+                stack.offer(c);
+
+            } else {
+
+                if (stack.peekLast() == c) {
+                    stack.pollLast();
+                } else {
+                    stack.offer(c);
+                }
+            }
+
+        }
+
+        return stack.isEmpty();
     }
 }
